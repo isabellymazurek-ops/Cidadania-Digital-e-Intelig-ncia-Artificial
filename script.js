@@ -22,14 +22,14 @@ function switchTab(tabId) {
     if(targetLink) targetLink.click();
 }
 
-// --- BANCO DE DADOS DE CURIOSIDADES ---
+// --- BANCO DE DADOS DE CURIOSIDADES EXPANDIDO ---
 const curiosidades = [
     "A primeira IA geradora de imagens surgiu muito antes do boom atual, mas os modelos atuais conseguem processar bilhões de parâmetros simultaneamente.",
     "Estudos indicam que mais de 50% dos jovens não conseguem diferenciar um título de notícia real de uma fake news gerada por IA.",
     "A tecnologia de clonagem de voz por IA agora precisa de apenas 3 segundos de amostra de áudio para replicar a voz de uma pessoa.",
     "Alguns países já criaram legislações específicas para que robôs ou algoritmos que tomem decisões públicas passem por auditorias de direitos humanos.",
-    "O termo 'Deepfake' surgiu em 2017 a partir da junção dos conceitos de 'Deep Learning' (Aprendizado Profundo) e 'Fake' (Falso).",
-    "Bots automatizados nas redes sociais conseguem imitar o comportamento humano a ponto de inflar artificialmente discussões políticas em minutos."
+    "O termo 'Deepfake' surgiu em 2017 combinando as palavras 'Deep Learning' (aprendizado profundo) e 'Fake' (falso).",
+    "Estima-se que os sistemas automatizados de redes sociais espalhem conteúdos falsos de cunho emocional de forma muito mais eficiente do que perfis reais."
 ];
 
 let curiosidadeAtual = 0;
@@ -57,62 +57,60 @@ const perguntasQuiz = [
         correta: 1
     },
     {
-        pergunta: "Como as 'Bolhas de Filtro' afetam a sua visão de mundo nas redes?",
+        pergunta: "O que caracteriza o conceito de 'Bolha de Filtro'?",
         opcoes: [
-            "Elas impedem que você veja anúncios e propagandas indesejadas.",
-            "Elas mostram apenas conteúdos que confirmam seus gostos, gerando polarização.",
-            "Elas deletam automaticamente contas falsas que espalham vírus."
+            "Uma camada extra de criptografia que protege suas senhas de invasões.",
+            "Algoritmos que entregam só o que você concorda, reduzindo o acesso a opiniões plurais.",
+            "Um filtro visual que oculta imagens violentas no feed das redes sociais."
         ],
         correta: 1
     },
     {
-        pergunta: "O que constitui uma postura correta de cidadania digital ao ver uma notícia suspeita?",
+        pergunta: "Como se posicionar criticamente como cidadão digital frente a notícias impactantes?",
         opcoes: [
-            "Checar em canais oficiais e agências de checagem antes de compartilhar.",
-            "Compartilhar imediatamente em todos os grupos para alertar as pessoas.",
-            "Ignorar completamente sem pesquisar se é verdadeira ou falsa."
+            "Validar a informação em agências independentes e portais sérios antes de repassar.",
+            "Compartilhar o conteúdo imediatamente nos grupos para gerar discussões rápidas.",
+            "Acreditar cegamente caso o link tenha sido compartilhado por um amigo próximo."
         ],
         correta: 0
     }
 ];
 
-let indiceQuestaoAtual = 0;
+let questaoAtual = 0;
 
 function carregarQuestao() {
-    const q = perguntasQuiz[indiceQuestaoAtual];
-    document.getElementById('quiz-contador').innerText = `Questão ${indiceQuestaoAtual + 1} de ${perguntasQuiz.length}`;
+    const q = perguntasQuiz[questaoAtual];
+    document.getElementById('quiz-contador').innerText = `Questão ${questaoAtual + 1} de ${perguntasQuiz.length}`;
     document.getElementById('quiz-pergunta').innerText = q.pergunta;
     document.getElementById('opt0').innerText = q.opcoes[0];
     document.getElementById('opt1').innerText = q.opcoes[1];
     document.getElementById('opt2').innerText = q.opcoes[2];
     
-    // Reseta o estado visual do feedback e oculta botão avançar
+    // Reseta elementos visuais nativos
     document.getElementById('quiz-feedback').innerText = "";
     document.getElementById('btn-proximo').style.display = "none";
-    document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = false);
+    document.querySelectorAll('.quiz-options .option-btn').forEach(btn => btn.disabled = false);
 }
 
 function verificarResposta(indice) {
-    const q = perguntasQuiz[indiceQuestaoAtual];
+    const q = perguntasQuiz[questaoAtual];
     const feedback = document.getElementById('quiz-feedback');
     const btnProximo = document.getElementById('btn-proximo');
     
-    // Desativa opções para evitar duplo clique
-    document.querySelectorAll('.option-btn').forEach(btn => {
-        if(btn.id !== 'btn-proximo') btn.disabled = true;
-    });
+    // Bloqueia cliques adicionais para estabilizar a resposta
+    document.querySelectorAll('.quiz-options .option-btn').forEach(btn => btn.disabled = true);
 
     if(indice === q.correta) {
         feedback.innerText = "Correto! A validação de mídias é essencial para a cidadania.";
         feedback.style.color = "#00f2fe";
     } else {
-        feedback.innerText = "Resposta incorreta. Lembre-se do impacto político e pessoal dos dados.";
+        feedback.innerText = "Resposta incorreta. Lembre-se do impacto político e pessoal dos Deepfakes.";
         feedback.style.color = "#ff4757";
     }
     
-    // Gerencia o botão de avançar/reiniciar
-    if(indiceQuestaoAtual === perguntasQuiz.length - 1) {
-        btnProximo.innerText = "Reiniciar Desafio ↺";
+    // Altera dinamicamente o texto do botão de avanço mantendo o escopo estrutural
+    if (questaoAtual === perguntasQuiz.length - 1) {
+        btnProximo.innerText = "Reiniciar Quiz ↺";
     } else {
         btnProximo.innerText = "Avançar no Desafio →";
     }
@@ -120,10 +118,10 @@ function verificarResposta(indice) {
 }
 
 function proximaQuestao() {
-    if(indiceQuestaoAtual < perguntasQuiz.length - 1) {
-        indiceQuestaoAtual++;
+    if (questaoAtual < perguntasQuiz.length - 1) {
+        questaoAtual++;
     } else {
-        indiceQuestaoAtual = 0; // Reinicia o quiz de forma cíclica
+        questaoAtual = 0; // Reinicia o circuito do jogo
     }
     carregarQuestao();
 }
