@@ -26,10 +26,10 @@ function switchTab(tabId) {
 const curiosidades = [
     "A primeira IA geradora de imagens surgiu muito antes do boom atual, mas os modelos atuais conseguem processar bilhões de parâmetros simultaneamente.",
     "Estudos indicam que mais de 50% dos jovens não conseguem diferenciar um título de notícia real de uma fake news gerada por IA.",
-    "A tecnologia de clonagem de voz por IA agora precisa de apenas 3 segundos de amostra de áudio para replicar a voz de uma pessoa com perfeição.",
+    "A tecnologia de clonagem de voz por IA agora precisa de apenas 3 segundos de amostra de áudio para replicar a voz de uma pessoa.",
     "Alguns países já criaram legislações específicas para que robôs ou algoritmos que tomem decisões públicas passem por auditorias de direitos humanos.",
-    "O termo 'Deepfake' nasceu em 2017 no fórum Reddit, combinando os termos 'Deep Learning' (aprendizado profundo) e 'Fake' (falso).",
-    "Estima-se que as ferramentas modernas de IA generativa consigam criar em um único dia mais imagens e artes digitais do que toda a humanidade levou séculos para pintar à mão."
+    "O termo 'Deepfake' surgiu em 2017 a partir da junção dos conceitos de 'Deep Learning' (Aprendizado Profundo) e 'Fake' (Falso).",
+    "Bots automatizados nas redes sociais conseguem imitar o comportamento humano a ponto de inflar artificialmente discussões políticas em minutos."
 ];
 
 let curiosidadeAtual = 0;
@@ -45,88 +45,85 @@ document.addEventListener("DOMContentLoaded", () => {
     carregarQuestao();
 });
 
-// --- ENGINE DE QUIZ EDUCATIVO EXPANDIDO (SISTEMA DE JOGO) ---
+// --- ENGINE DE QUIZ EDUCATIVO (JOGO MULTIQUESTÕES) ---
 const perguntasQuiz = [
     {
         pergunta: "Qual é o principal perigo dos Deepfakes na sociedade?",
         opcoes: [
-            "Gastar muita energia elétrica nos servidores de processamento.",
-            "Destruir a reputação de pessoas e espalhar fraudes visuais altamente convincentes.",
-            "Deixar os uploads e downloads da internet mais lentos devido ao tamanho dos arquivos gráficos."
+            "Gastar muita energia elétrica nos servidores.",
+            "Destruir a reputação de pessoas e espalhar fraudes visuais convincentes.",
+            "Deixar a internet mais lenta devido ao tamanho dos arquivos."
         ],
         correta: 1
     },
     {
-        pergunta: "O que caracteriza uma 'Bolha de Filtro' nas redes sociais?",
+        pergunta: "Como as 'Bolhas de Filtro' afetam a sua visão de mundo nas redes?",
         opcoes: [
-            "Um vírus que bloqueia as imagens do seu feed de notícias.",
-            "Configurações que limitam o tempo diário de uso de telas pelo usuário.",
-            "Algoritmos que te isolam mostrando apenas ideias com as quais você já concorda, aumentando a polarização."
+            "Elas impedem que você veja anúncios e propagandas indesejadas.",
+            "Elas mostram apenas conteúdos que confirmam seus gostos, gerando polarização.",
+            "Elas deletam automaticamente contas falsas que espalham vírus."
         ],
-        correta: 2
+        correta: 1
     },
     {
-        pergunta: "Qual a melhor postura ao receber um link alarmista ou bizarro em um grupo de mensagens?",
+        pergunta: "O que constitui uma postura correta de cidadania digital ao ver uma notícia suspeita?",
         opcoes: [
-            "Checar em portais de notícias confiáveis e agências de checagem antes de compartilhar.",
-            "Repassar imediatamente para todos os seus contatos por precaução.",
-            "Acreditar totalmente se a mensagem tiver sido enviada por um amigo ou familiar próximo."
+            "Checar em canais oficiais e agências de checagem antes de compartilhar.",
+            "Compartilhar imediatamente em todos os grupos para alertar as pessoas.",
+            "Ignorar completamente sem pesquisar se é verdadeira ou falsa."
         ],
         correta: 0
     }
 ];
 
-let questaoAtual = 0;
+let indiceQuestaoAtual = 0;
 
 function carregarQuestao() {
-    const q = perguntasQuiz[questaoAtual];
-    
-    // Atualiza progresso e texto
-    document.getElementById('quiz-progresso').innerText = `Pergunta ${questaoAtual + 1} de ${perguntasQuiz.length}`;
+    const q = perguntasQuiz[indiceQuestaoAtual];
+    document.getElementById('quiz-contador').innerText = `Questão ${indiceQuestaoAtual + 1} de ${perguntasQuiz.length}`;
     document.getElementById('quiz-pergunta').innerText = q.pergunta;
     document.getElementById('opt0').innerText = q.opcoes[0];
     document.getElementById('opt1').innerText = q.opcoes[1];
     document.getElementById('opt2').innerText = q.opcoes[2];
     
-    // Reseta estado visual do feedback e botões
+    // Reseta o estado visual do feedback e oculta botão avançar
     document.getElementById('quiz-feedback').innerText = "";
-    document.getElementById('btn-proxima-pergunta').style.display = "none";
-    
-    // Reativa botões de opção
+    document.getElementById('btn-proximo').style.display = "none";
     document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = false);
 }
 
 function verificarResposta(indice) {
+    const q = perguntasQuiz[indiceQuestaoAtual];
     const feedback = document.getElementById('quiz-feedback');
-    const botaoproximo = document.getElementById('btn-proxima-pergunta');
+    const btnProximo = document.getElementById('btn-proximo');
     
-    // Trava os botões para não clicar mais de uma vez
-    document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
+    // Desativa opções para evitar duplo clique
+    document.querySelectorAll('.option-btn').forEach(btn => {
+        if(btn.id !== 'btn-proximo') btn.disabled = true;
+    });
 
-    if(indice === perguntasQuiz[questaoAtual].correta) {
-        feedback.innerText = "✨ Correto! Excelente reflexão sobre cidadania e ética.";
+    if(indice === q.correta) {
+        feedback.innerText = "Correto! A validação de mídias é essencial para a cidadania.";
         feedback.style.color = "#00f2fe";
     } else {
-        feedback.innerText = "❌ Incorreto. Analise bem o impacto social e tecnológico envolvido.";
+        feedback.innerText = "Resposta incorreta. Lembre-se do impacto político e pessoal dos dados.";
         feedback.style.color = "#ff4757";
     }
     
-    // Mostra o botão para avançar no jogo
-    botaoproximo.style.display = "block";
-    if (questaoAtual === perguntasQuiz.length - 1) {
-        botaoproximo.innerHTML = 'Reiniciar Quiz <i class="fa-solid fa-arrow-rotate-left"></i>';
+    // Gerencia o botão de avançar/reiniciar
+    if(indiceQuestaoAtual === perguntasQuiz.length - 1) {
+        btnProximo.innerText = "Reiniciar Desafio ↺";
     } else {
-        botaoproximo.innerHTML = 'Avançar <i class="fa-solid fa-arrow-right"></i>';
+        btnProximo.innerText = "Avançar no Desafio →";
     }
+    btnProximo.style.display = "block";
 }
 
 function proximaQuestao() {
-    if (questaoAtual < perguntasQuiz.length - 1) {
-        questaoAtual++;
-        carregarQuestao();
+    if(indiceQuestaoAtual < perguntasQuiz.length - 1) {
+        indiceQuestaoAtual++;
     } else {
-        // Reinicia o quiz se chegou ao fim
-        questaoAtual = 0;
-        carregarQuestao();
+        indiceQuestaoAtual = 0; // Reinicia o quiz de forma cíclica
     }
+    carregarQuestao();
 }
