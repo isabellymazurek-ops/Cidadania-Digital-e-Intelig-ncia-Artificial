@@ -1,4 +1,4 @@
-// --- BANCO DE DADOS DE CURIOSIDADES ---
+// --- BANCO DE DADOS DE CURIOSIDADES EXPANDIDO ---
 const curiosidades = [
     "A primeira IA geradora de imagens surgiu muito antes do boom atual, mas os modelos atuais conseguem processar bilhões de parâmetros simultaneamente.",
     "Estudos indicam que mais de 50% dos jovens não conseguem diferenciar um título de notícia real de uma fake news gerada por IA.",
@@ -10,7 +10,7 @@ const curiosidades = [
 
 let curiosidadeAtual = 0;
 
-// Força a execução imediata assim que o script carrega para garantir que o texto apareça
+// Renderização imediata da primeira frase sem delay
 function inicializarCuriosidade() {
     const elementoTexto = document.getElementById('curiosidade-texto');
     if (elementoTexto) {
@@ -44,13 +44,12 @@ document.querySelectorAll('.nav-item').forEach(link => {
     });
 });
 
-// Função auxiliar para trocar de aba através de botões internos
 function switchTab(tabId) {
     const targetLink = document.querySelector(`[data-target="${tabId}"]`);
     if(targetLink) targetLink.click();
 }
 
-// --- ENGINE DE QUIZ EDUCATIVO (JOGO MULTIQUESTÕES) ---
+// --- ENGINE DE QUIZ / JOGO INTERATIVO ---
 const perguntasQuiz = [
     {
         pergunta: "Qual é o principal perigo dos Deepfakes na sociedade?",
@@ -64,18 +63,18 @@ const perguntasQuiz = [
     {
         pergunta: "O que caracteriza o conceito de 'Bolha de Filtro'?",
         opcoes: [
-            "Uma camada extra de criptografia que protege suas senhas de invasões.",
+            "Uma camada extra de segurança que protege suas senhas de invasões corporativas.",
             "Algoritmos que entregam só o que você concorda, reduzindo o acesso a opiniões plurais.",
-            "Um filtro visual que oculta imagens violentas no feed das redes sociais."
+            "Um filtro de privacidade que oculta fotos pesadas no feed das redes sociais."
         ],
         correta: 1
     },
     {
-        pergunta: "Como se posicionar criticamente como cidadão digital frente a notícias impactantes?",
+        pergunta: "Como se posicionar criticamente como cidadão digital frente a notícias de grande impacto?",
         opcoes: [
             "Validar a informação em agências independentes e portais sérios antes de repassar.",
-            "Compartilhar o conteúdo imediatamente nos grupos para gerar discussões rápidas.",
-            "Acreditar cegamente caso o link tenha sido compartilhado por um amigo próximo."
+            "Compartilhar o conteúdo imediatamente nos grupos para alertar conhecidos rapidamente.",
+            "Acreditar totalmente caso o link tenha sido compartilhado por um amigo de confiança."
         ],
         correta: 0
     }
@@ -97,7 +96,7 @@ function carregarQuestao() {
         
         // Reseta elementos visuais nativos
         document.getElementById('quiz-feedback').innerText = "";
-        document.getElementById('btn-proximo').style.style.display = "none";
+        document.getElementById('btn-proximo').style.display = "none";
         document.querySelectorAll('.quiz-options .option-btn').forEach(btn => btn.disabled = false);
     }
 }
@@ -107,20 +106,20 @@ function verificarResposta(indice) {
     const feedback = document.getElementById('quiz-feedback');
     const btnProximo = document.getElementById('btn-proximo');
     
-    // Bloqueia cliques adicionais para estabilizar a resposta
+    // Desativa opções de clique duplo
     document.querySelectorAll('.quiz-options .option-btn').forEach(btn => btn.disabled = true);
 
     if(indice === q.correta) {
         feedback.innerText = "Correto! A validação de mídias é essencial para a cidadania.";
         feedback.style.color = "#00f2fe";
     } else {
-        feedback.innerText = "Resposta incorreta. Lembre-se do impacto político e pessoal dos Deepfakes.";
+        feedback.innerText = "Resposta incorreta. Lembre-se do impacto político e pessoal dos dados.";
         feedback.style.color = "#ff4757";
     }
     
-    // Altera dinamicamente o texto do botão de avanço mantendo o escopo estrutural
+    // Altera dinamicamente o texto do botão de avanço mantendo o estilo base
     if (questaoAtual === perguntasQuiz.length - 1) {
-        btnProximo.innerText = "Reiniciar Quiz ↺";
+        btnProximo.innerText = "Reiniciar Desafio ↺";
     } else {
         btnProximo.innerText = "Avançar no Desafio →";
     }
@@ -131,12 +130,12 @@ function proximaQuestao() {
     if (questaoAtual < perguntasQuiz.length - 1) {
         questaoAtual++;
     } else {
-        questaoAtual = 0; // Reinicia o circuito do jogo
+        questaoAtual = 0; // Reinicia o circuito
     }
     carregarQuestao();
 }
 
-// Execução de segurança: garante o carregamento independente da velocidade do navegador
+// Disparador de segurança unificado para evitar conflitos de velocidade do navegador
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
         inicializarCuriosidade();
