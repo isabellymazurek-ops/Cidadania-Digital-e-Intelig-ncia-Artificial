@@ -1,4 +1,4 @@
-// --- BANCO DE DADOS DE CURIOSIDADES EXPANDIDO ---
+// --- BANCO DE DADOS DE CURIOSIDADES ---
 const curiosidades = [
     "A primeira IA geradora de imagens surgiu muito antes do boom atual, mas os modelos atuais conseguem processar bilhões de parâmetros simultaneamente.",
     "Estudos indicam que mais de 50% dos jovens não conseguem diferenciar um título de notícia real de uma fake news gerada por IA.",
@@ -10,7 +10,6 @@ const curiosidades = [
 
 let curiosidadeAtual = 0;
 
-// Renderização imediata da primeira frase sem delay
 function inicializarCuriosidade() {
     const elementoTexto = document.getElementById('curiosidade-texto');
     if (elementoTexto) {
@@ -31,16 +30,16 @@ document.querySelectorAll('.nav-item').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         
-        // Remove classes ativas antigas
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active-tab'));
         
-        // Adiciona classe ativa ao botão clicado
         this.classList.add('active');
         
-        // Ativa a seção correspondente
         const targetId = this.getAttribute('data-target');
-        document.getElementById(targetId).classList.add('active-tab');
+        const targetTab = document.getElementById(targetId);
+        if (targetTab) {
+            targetTab.classList.add('active-tab');
+        }
     });
 });
 
@@ -49,7 +48,7 @@ function switchTab(tabId) {
     if(targetLink) targetLink.click();
 }
 
-// --- ENGINE DE QUIZ / JOGO INTERATIVO ---
+// --- ENGINE DO QUIZ ---
 const perguntasQuiz = [
     {
         pergunta: "Qual é o principal perigo dos Deepfakes na sociedade?",
@@ -94,7 +93,6 @@ function carregarQuestao() {
         document.getElementById('opt1').innerText = q.opcoes[1];
         document.getElementById('opt2').innerText = q.opcoes[2];
         
-        // Reseta elementos visuais nativos
         document.getElementById('quiz-feedback').innerText = "";
         document.getElementById('btn-proximo').style.display = "none";
         document.querySelectorAll('.quiz-options .option-btn').forEach(btn => btn.disabled = false);
@@ -106,7 +104,6 @@ function verificarResposta(indice) {
     const feedback = document.getElementById('quiz-feedback');
     const btnProximo = document.getElementById('btn-proximo');
     
-    // Desativa opções de clique duplo
     document.querySelectorAll('.quiz-options .option-btn').forEach(btn => btn.disabled = true);
 
     if(indice === q.correta) {
@@ -117,7 +114,6 @@ function verificarResposta(indice) {
         feedback.style.color = "#ff4757";
     }
     
-    // Altera dinamicamente o texto do botão de avanço mantendo o estilo base
     if (questaoAtual === perguntasQuiz.length - 1) {
         btnProximo.innerText = "Reiniciar Desafio ↺";
     } else {
@@ -130,18 +126,13 @@ function proximaQuestao() {
     if (questaoAtual < perguntasQuiz.length - 1) {
         questaoAtual++;
     } else {
-        questaoAtual = 0; // Reinicia o circuito
+        questaoAtual = 0;
     }
     carregarQuestao();
 }
 
-// Disparador de segurança unificado para evitar conflitos de velocidade do navegador
-if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => {
-        inicializarCuriosidade();
-        carregarQuestao();
-    });
-} else {
+// Inicialização segura garantida
+window.onload = () => {
     inicializarCuriosidade();
     carregarQuestao();
-}
+};
