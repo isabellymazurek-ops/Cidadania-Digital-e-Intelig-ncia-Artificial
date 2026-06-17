@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuro Digital | Cidadania & IA</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ícones modernos -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-brain text-gradient"></i> <span>NexusDigital</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-item active" data-target="inicio">Início</a></li>
+            <li><a href="#" class="nav-item" data-target="ia-sociedade">IA na Sociedade</a></li>
+            <li><a href="#" class="nav-item" data-target="deepfakes">Deepfakes</a></li>
+            <li><a href="#" class="nav-item" data-target="desinformacao">Desinformação</a></li>
+            <li><a href="#" class="nav-item" data-target="laboratorio">Laboratório IA</a></li>
+        </ul>
+        <div class="menu-toggle" id="mobile-menu">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal Dinâmico -->
+    <main class="content-wrapper">
+
+        <!-- ABA 1: INÍCIO -->
+        <section id="inicio" class="tab-content active-tab fade-in">
+            <div class="hero">
+                <h1 class="hero-title">O Futuro da <span class="text-gradient">Cidadania Digital</span></h1>
+                <p class="hero-subtitle">Navegando na era da Inteligência Artificial com consciência, ética e segurança.</p>
+                <button class="btn-primary" onclick="switchTab('ia-sociedade')">Explorar Universo</button>
+            </div>
+
+            <!-- Cards Interativos de Destaque -->
+            <div class="grid-cards">
+                <div class="card interactive-card">
+                    <i class="fa-solid fa-shield-halved card-icon"></i>
+                    <h3>Ética e IA</h3>
+                    <p>Como os algoritmos moldam nossas decisões diárias e o mercado atual.</p>
+                </div>
+                <div class="card interactive-card">
+                    <i class="fa-solid fa-eye-slash card-icon"></i>
+                    <h3>Privacidade</h3>
+                    <p>Mecanismos para proteger sua identidade contra rastreamento preditivo.</p>
+                </div>
+                <div class="card interactive-card">
+                    <i class="fa-solid fa-network-wired card-icon"></i>
+                    <h3>Inclusão</h3>
+                    <p>Garantindo que os avanços tecnológicos reduzam as desigualdades globais.</p>
+                </div>
+            </div>
+
+            <!-- Área de Curiosidades -->
+            <div class="curiosidade-box">
+                <div class="curiosidade-badge"><i class="fa-solid fa-lightbulb"></i> Você Sabia?</div>
+                <p id="curiosidade-texto">Carregando fato curioso...</p>
+                <button class="btn-secondary" onclick="proximaCuriosidade()">Próximo Fato</button>
+            </div>
+        </section>
+
+        <!-- ABA 2: IA NA SOCIEDADE -->
+        <section id="ia-sociedade" class="tab-content fade-in">
+            <h2 class="section-title">IA na Sociedade</h2>
+            <div class="split-container">
+                <div class="split-text">
+                    <p>A Inteligência Artificial não é mais conceito de ficção científica. Ela gerencia o tráfego de grandes metrópoles, prevê diagnósticos médicos complexos e dita o ritmo da economia global.</p>
+                    <p>O grande desafio da cidadania digital é balancear essa automação com a supervisão humana, evitando vieses algorítmicos que discriminam minorias.</p>
+                </div>
+                <div class="split-media">
+                    <div class="placeholder-image">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>Ilustração: IA Integrada</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABA 3: DEEPFAKES -->
+        <section id="deepfakes" class="tab-content fade-in">
+            <h2 class="section-title">A Era dos Deepfakes</h2>
+            <div class="split-container reverse">
+                <div class="split-text">
+                    <p>Deepfakes utilizam redes neurais profundas (mídias sintéticas) para clonar vozes, rostos e expressões com perfeição assustadora.</p>
+                    <div class="alert-box">
+                        <strong>Como detectar?</strong> Preste atenção em piscadas não naturais, falhas na iluminação das orelhas e distorções nas bordas do rosto.
+                    </div>
+                </div>
+                <div class="split-media">
+                    <div class="placeholder-video">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Simulação de Vídeo: Análise Facial IA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABA 4: DESINFORMAÇÃO -->
+        <section id="desinformacao" class="tab-content fade-in">
+            <h2 class="section-title">Desinformação & Impacto Social</h2>
+            <p class="center-text">As fake news potencializadas por bots espalham-se seis vezes mais rápido do que as notícias verdadeiras.</p>
+            
+            <div class="grid-cards">
+                <div class="card status-card">
+                    <span class="status-num">01</span>
+                    <h4>Bolhas de Filtro</h4>
+                    <p>Algoritmos de redes sociais entregam apenas o que você concorda, polarizando o debate.</p>
+                </div>
+                <div class="card status-card">
+                    <span class="status-num">02</span>
+                    <h4>Ataques à Democracia</h4>
+                    <p>Campanhas coordenadas de mentiras manipulam eleições e desacreditam instituições.</p>
+                </div>
+                <div class="card status-card">
+                    <span class="status-num">03</span>
+                    <h4>Saúde Pública</h4>
+                    <p>Rumores falsos sobre curas milagrosas colocam vidas humanas em risco real.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABA 5: LABORATÓRIO (QUIZZES) -->
+        <section id="laboratorio" class="tab-content fade-in">
+            <h2 class="section-title">Laboratório Educativo</h2>
+            
+            <div class="quiz-container">
+                <div id="quiz-box">
+                    <h3 id="quiz-pergunta">Pergunta do Quiz</h3>
+                    <div class="quiz-options">
+                        <button class="option-btn" onclick="verificarResposta(0)" id="opt0">Opção A</button>
+                        <button class="option-btn" onclick="verificarResposta(1)" id="opt1">Opção B</button>
+                        <button class="option-btn" onclick="verificarResposta(2)" id="opt2">Opção C</button>
+                    </div>
+                    <p id="quiz-feedback" class="quiz-feedback"></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <p>&copy; 2026 NexusDigital. Consciência Tecnológica.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
