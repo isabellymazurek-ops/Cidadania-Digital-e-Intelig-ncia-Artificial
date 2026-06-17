@@ -22,34 +22,14 @@ function switchTab(tabId) {
     if(targetLink) targetLink.click();
 }
 
-// --- MENU RESPONSIVO MOBILE ---
-const mobileMenu = document.getElementById('mobile-menu');
-if (mobileMenu) {
-    mobileMenu.addEventListener('click', () => {
-        const navLinks = document.querySelector('.nav-links');
-        if (navLinks.style.display === 'flex') {
-            navLinks.style.display = 'none';
-        } else {
-            navLinks.style.display = 'flex';
-            navLinks.style.styleFloat = 'none';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '70px';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.background = 'rgba(10, 11, 16, 0.95)';
-            navLinks.style.padding = '2rem';
-        }
-    });
-}
-
 // --- BANCO DE DADOS DE CURIOSIDADES ---
 const curiosidades = [
     "A primeira IA geradora de imagens surgiu muito antes do boom atual, mas os modelos atuais conseguem processar bilhões de parâmetros simultaneamente.",
     "Estudos indicam que mais de 50% dos jovens não conseguem diferenciar um título de notícia real de uma fake news gerada por IA.",
-    "A tecnologia de clonagem de voz por IA agora precisa de apenas 3 segundos de amostra de áudio para replicar a voz de uma pessoa com fidelidade emocional.",
-    "Alguns países já criaram legislações específicas para que robôs ou algoritmos que tomem decisões públicas passem por auditorias humanas regulares.",
-    "O termo 'Deepfake' nasceu em 2017 em uma comunidade do Reddit, misturando os termos 'Deep Learning' (aprendizado profundo) e 'Fake' (falso)."
+    "A tecnologia de clonagem de voz por IA agora precisa de apenas 3 segundos de amostra de áudio para replicar a voz de uma pessoa com perfeição.",
+    "Alguns países já criaram legislações específicas para que robôs ou algoritmos que tomem decisões públicas passem por auditorias de direitos humanos.",
+    "O termo 'Deepfake' nasceu em 2017 no fórum Reddit, combinando os termos 'Deep Learning' (aprendizado profundo) e 'Fake' (falso).",
+    "Estima-se que as ferramentas modernas de IA generativa consigam criar em um único dia mais imagens e artes digitais do que toda a humanidade levou séculos para pintar à mão."
 ];
 
 let curiosidadeAtual = 0;
@@ -59,32 +39,38 @@ function proximaCuriosidade() {
     document.getElementById('curiosidade-texto').innerText = curiosidades[curiosidadeAtual];
 }
 
-// --- ENGINE DE QUIZ EDUCATIVO (EXPANDIDO) ---
+// Inicializar primeira curiosidade ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('curiosidade-texto').innerText = curiosidades[0];
+    carregarQuestao();
+});
+
+// --- ENGINE DE QUIZ EDUCATIVO EXPANDIDO (SISTEMA DE JOGO) ---
 const perguntasQuiz = [
     {
-        pergunta: "Qual é o principal perigo dos Deepfakes na sociedade moderna?",
+        pergunta: "Qual é o principal perigo dos Deepfakes na sociedade?",
         opcoes: [
-            "Gastar muita energia elétrica nos servidores de processamento de imagem.",
-            "Destruir a reputação de pessoas e espalhar fraudes políticas/visuais muito convincentes.",
-            "Deixar a infraestrutura de internet mundial lenta devido ao tamanho de seus arquivos."
+            "Gastar muita energia elétrica nos servidores de processamento.",
+            "Destruir a reputação de pessoas e espalhar fraudes visuais altamente convincentes.",
+            "Deixar os uploads e downloads da internet mais lentos devido ao tamanho dos arquivos gráficos."
         ],
         correta: 1
     },
     {
-        pergunta: "O que caracteriza o fenômeno conhecido como 'Câmara de Eco' nas redes?",
+        pergunta: "O que caracteriza uma 'Bolha de Filtro' nas redes sociais?",
         opcoes: [
-            "Falhas de áudio durante chamadas de vídeo criptografadas.",
-            "A propagação de sinais de satélite em áreas puramente rurais.",
-            "Algoritmos que mostram apenas conteúdos que reforçam suas próprias crenças prévias."
+            "Um vírus que bloqueia as imagens do seu feed de notícias.",
+            "Configurações que limitam o tempo diário de uso de telas pelo usuário.",
+            "Algoritmos que te isolam mostrando apenas ideias com as quais você já concorda, aumentando a polarização."
         ],
         correta: 2
     },
     {
-        pergunta: "Como a cidadania digital define o termo explicabilidade na IA?",
+        pergunta: "Qual a melhor postura ao receber um link alarmista ou bizarro em um grupo de mensagens?",
         opcoes: [
-            "O direito de saber como um algoritmo chegou a uma decisão que afeta sua vida.",
-            "A capacidade de um robô traduzir textos para múltiplos idiomas simultaneamente.",
-            "A velocidade de digitação automatizada em centrais de atendimento ao cliente."
+            "Checar em portais de notícias confiáveis e agências de checagem antes de compartilhar.",
+            "Repassar imediatamente para todos os seus contatos por precaução.",
+            "Acreditar totalmente se a mensagem tiver sido enviada por um amigo ou familiar próximo."
         ],
         correta: 0
     }
@@ -94,53 +80,53 @@ let questaoAtual = 0;
 
 function carregarQuestao() {
     const q = perguntasQuiz[questaoAtual];
-    document.getElementById('quiz-progresso').innerText = `Questão ${questaoAtual + 1}/${perguntasQuiz.length}`;
+    
+    // Atualiza progresso e texto
+    document.getElementById('quiz-progresso').innerText = `Pergunta ${questaoAtual + 1} de ${perguntasQuiz.length}`;
     document.getElementById('quiz-pergunta').innerText = q.pergunta;
     document.getElementById('opt0').innerText = q.opcoes[0];
     document.getElementById('opt1').innerText = q.opcoes[1];
     document.getElementById('opt2').innerText = q.opcoes[2];
+    
+    // Reseta estado visual do feedback e botões
     document.getElementById('quiz-feedback').innerText = "";
-    document.getElementById('btn-next-quiz').style.display = "none";
+    document.getElementById('btn-proxima-pergunta').style.display = "none";
+    
+    // Reativa botões de opção
+    document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = false);
 }
 
 function verificarResposta(indice) {
     const feedback = document.getElementById('quiz-feedback');
-    const correto = perguntasQuiz[questaoAtual].correta;
+    const botaoproximo = document.getElementById('btn-proxima-pergunta');
     
-    if(indice === correto) {
-        feedback.innerText = "Correto! Excelente análise crítica.";
+    // Trava os botões para não clicar mais de uma vez
+    document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
+
+    if(indice === perguntasQuiz[questaoAtual].correta) {
+        feedback.innerText = "✨ Correto! Excelente reflexão sobre cidadania e ética.";
         feedback.style.color = "#00f2fe";
     } else {
-        feedback.innerText = "Incorreto. Analise os impactos éticos da questão.";
+        feedback.innerText = "❌ Incorreto. Analise bem o impacto social e tecnológico envolvido.";
         feedback.style.color = "#ff4757";
     }
-    document.getElementById('btn-next-quiz').style.display = "inline-block";
+    
+    // Mostra o botão para avançar no jogo
+    botaoproximo.style.display = "block";
+    if (questaoAtual === perguntasQuiz.length - 1) {
+        botaoproximo.innerHTML = 'Reiniciar Quiz <i class="fa-solid fa-arrow-rotate-left"></i>';
+    } else {
+        botaoproximo.innerHTML = 'Avançar <i class="fa-solid fa-arrow-right"></i>';
+    }
 }
 
 function proximaQuestao() {
-    questaoAtual = (questaoAtual + 1) % perguntasQuiz.length;
-    carregarQuestao();
+    if (questaoAtual < perguntasQuiz.length - 1) {
+        questaoAtual++;
+        carregarQuestao();
+    } else {
+        // Reinicia o quiz se chegou ao fim
+        questaoAtual = 0;
+        carregarQuestao();
+    }
 }
-
-// --- MINI JOGO: JORNADA DA CIDADANIA ---
-let playerStep = 1;
-const historiasJogo = {
-    1: { text: "Você recebeu um link alarmante em um grupo de mensagens. O que você faz?", opt1: "Checar fontes confiáveis antes", opt2: "Compartilhar imediatamente" },
-    2: { text: "Um perfil de IA clonou o rosto de um amigo pedindo dinheiro urgente via chat. Qual sua reação?", opt1: "Ligar por canal seguro para validar", opt2: "Fazer a transferência correndo" },
-    3: { text: "Um app pede acesso a todos os seus dados e fotos para fazer uma caricatura digital em segundos. Você aceita?", opt1: "Recusar e ler os termos de privacidade", opt2: "Permitir tudo sem ler nada" },
-    4: { text: "Você encontrou um comentário preconceituoso impulsionado visivelmente por robôs artificiais. O que faz?", opt1: "Denunciar a conta à plataforma", opt2: "Discutir irritado com o robô" }
-};
-
-function jogarTurno(escolhaCorreta) {
-    const storyText = document.getElementById('game-story');
-    const btnContainer = document.getElementById('game-btn-container');
-
-    if (escolhaCorreta) {
-        document.getElementById(`step${playerStep}`).classList.remove('active-step');
-        playerStep++;
-        
-        if(playerStep <= 4) {
-            document.getElementById(`step${playerStep}`).classList.add('active-step');
-            storyText.innerText = historiasJogo[playerStep].text;
-            btnContainer.innerHTML = `
-                <button class="option-btn" onclick="jogarTurno(true)">
