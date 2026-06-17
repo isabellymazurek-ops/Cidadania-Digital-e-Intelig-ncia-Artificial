@@ -22,7 +22,7 @@
             <li><a href="#" class="nav-item" data-target="desinformacao">Desinformação</a></li>
             <li><a href="#" class="nav-item" data-target="laboratorio">Laboratório IA</a></li>
         </ul>
-        <div class="menu-toggle" id="mobile-menu">
+        <div class="menu-toggle" id="mobile-menu" onclick="toggleMenu()">
             <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
@@ -43,24 +43,24 @@
                 <div class="card interactive-card">
                     <i class="fa-solid fa-shield-halved card-icon"></i>
                     <h3>Ética e IA</h3>
-                    <p>Como os algoritmos moldam nossas decisões diárias e o mercado atual.</p>
+                    <p>Como os algoritmos moldam nossas decisões diárias, o consumo e o mercado atual. Entenda o viés de dados que perpetua preconceitos estruturais no ambiente digital.</p>
                 </div>
                 <div class="card interactive-card">
                     <i class="fa-solid fa-eye-slash card-icon"></i>
                     <h3>Privacidade</h3>
-                    <p>Mecanismos para proteger sua identidade contra rastreamento preditivo.</p>
+                    <p>Mecanismos para proteger sua identidade contra rastreamento preditivo e a coleta em massa de pegadas digitais por grandes corporações (Big Techs).</p>
                 </div>
                 <div class="card interactive-card">
                     <i class="fa-solid fa-network-wired card-icon"></i>
                     <h3>Inclusão</h3>
-                    <p>Garantindo que os avanços tecnológicos reduzam as desigualdades globais.</p>
+                    <p>Garantindo que os avanços tecnológicos reduzam as desigualdades globais, democratizando o acesso a ferramentas generativas em comunidades vulneráveis.</p>
                 </div>
             </div>
 
             <!-- Área de Curiosidades -->
             <div class="curiosidade-box">
                 <div class="curiosidade-badge"><i class="fa-solid fa-lightbulb"></i> Você Sabia?</div>
-                <p id="curiosidade-texto">Carregando fato curioso...</p>
+                <p id="curiosidade-texto">Carregando fato curioso sobre o ecossistema digital...</p>
                 <button class="btn-secondary" onclick="proximaCuriosidade()">Próximo Fato</button>
             </div>
         </section>
@@ -70,14 +70,12 @@
             <h2 class="section-title">IA na Sociedade</h2>
             <div class="split-container">
                 <div class="split-text">
-                    <p>A Inteligência Artificial não é mais conceito de ficção científica. Ela gerencia o tráfego de grandes metrópoles, prevê diagnósticos médicos complexos e dita o ritmo da economia global.</p>
-                    <p>O grande desafio da cidadania digital é balancear essa automação com a supervisão humana, evitando vieses algorítmicos que discriminam minorias.</p>
+                    <p>A Inteligência Artificial não é mais conceito de ficção científica. Ela gerencia o tráfego de grandes metrópoles, prevê diagnósticos médicos complexos com precisão superior à humana e dita o ritmo da economia global por meio de investimentos automatizados.</p>
+                    <p>O grande desafio da cidadania digital é balancear essa automação com a supervisão humana, evitando vieses algorítmicos que discriminam minorias e decidem de forma opaca quem tem direito a crédito, emprego ou liberdade condicional.</p>
+                    <p>Estamos vivendo a transição da IA Analítica para a IA Generativa (capaz de criar arte, códigos e literatura). Isso exige uma nova alfabetização digital para discernir o que é produção orgânica do que é automação sintética.</p>
                 </div>
                 <div class="split-media">
-                    <div class="placeholder-image">
-                        <i class="fa-solid fa-robot"></i>
-                        <span>Ilustração: IA Integrada</span>
-                    </div>
+                    <img src="https://unsplash.com" alt="Inteligência Artificial e Conexões Neurais" class="media-content">
                 </div>
             </div>
         </section>
@@ -87,16 +85,14 @@
             <h2 class="section-title">A Era dos Deepfakes</h2>
             <div class="split-container reverse">
                 <div class="split-text">
-                    <p>Deepfakes utilizam redes neurais profundas (mídias sintéticas) para clonar vozes, rostos e expressões com perfeição assustadora.</p>
+                    <p>Deepfakes utilizam redes neurais profundas (mídias sintéticas baseadas em Redes Adversariais Generativas - GANs) para clonar vozes, rostos e expressões com perfeição assustadora, sobrepondo identidades em arquivos multimídia.</p>
+                    <p>Embora possuam aplicações legítimas no cinema e na dublagem internacional, seu uso malicioso para fraudes financeiras, pornografia de revanche sem consentimento e desestabilização geopolítica cresce exponencialmente a cada ano.</p>
                     <div class="alert-box">
-                        <strong>Como detectar?</strong> Preste atenção em piscadas não naturais, falhas na iluminação das orelhas e distorções nas bordas do rosto.
+                        <strong>Como detectar?</strong> Preste atenção em piscadas não naturais ou raras, falhas na iluminação das orelhas/óculos, sincronia labial desalinhada e distorções borradas nas bordas do rosto ao virar de lado.
                     </div>
                 </div>
                 <div class="split-media">
-                    <div class="placeholder-video">
-                        <i class="fa-solid fa-play"></i>
-                        <span>Simulação de Vídeo: Análise Facial IA</span>
-                    </div>
+                    <video src="https://vimeo.com" autoplay loop muted playsinline class="media-content"></video>
                 </div>
             </div>
         </section>
@@ -104,34 +100,39 @@
         <!-- ABA 4: DESINFORMAÇÃO -->
         <section id="desinformacao" class="tab-content fade-in">
             <h2 class="section-title">Desinformação & Impacto Social</h2>
-            <p class="center-text">As fake news potencializadas por bots espalham-se seis vezes mais rápido do que as notícias verdadeiras.</p>
+            <p class="center-text">As fake news potencializadas por redes de bots automatizados e impulsionamento pago espalham-se seis vezes mais rápido nas plataformas digitais do que as notícias verdadeiras.</p>
             
             <div class="grid-cards">
                 <div class="card status-card">
                     <span class="status-num">01</span>
                     <h4>Bolhas de Filtro</h4>
-                    <p>Algoritmos de redes sociais entregam apenas o que você concorda, polarizando o debate.</p>
+                    <p>Algoritmos de redes sociais entregam apenas conteúdos que reforçam seus preconceitos prévios, eliminando o contraditório e gerando uma polarização extrema do debate civil.</p>
                 </div>
                 <div class="card status-card">
                     <span class="status-num">02</span>
                     <h4>Ataques à Democracia</h4>
-                    <p>Campanhas coordenadas de mentiras manipulam eleições e desacreditam instituições.</p>
+                    <p>Campanhas coordenadas de desinformação manipulam processos eleitorais, inflamam discursos de ódio direcionados e tentam desestabilizar a confiança nas instituições democráticas.</p>
                 </div>
                 <div class="card status-card">
                     <span class="status-num">03</span>
                     <h4>Saúde Pública</h4>
-                    <p>Rumores falsos sobre curas milagrosas colocam vidas humanas em risco real.</p>
+                    <p>Rumores falsos sobre movimentos antivacina e curas milagrosas sem comprovação científica enganam populações inteiras, provocando o retorno de doenças erradicadas.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ABA 5: LABORATÓRIO (QUIZZES) -->
+        <!-- ABA 5: LABORATÓRIO (QUIZZES E JOGOS) -->
         <section id="laboratorio" class="tab-content fade-in">
             <h2 class="section-title">Laboratório Educativo</h2>
             
-            <div class="quiz-container">
+            <!-- JOGO 1: QUIZ TRADICIONAL DINÂMICO -->
+            <div class="quiz-container" style="margin-bottom: 3rem;">
                 <div id="quiz-box">
-                    <h3 id="quiz-pergunta">Pergunta do Quiz</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <span class="badge-game"><i class="fa-solid fa-gamepad"></i> JOGO 1: QUIZ DE HISTÓRIA</span>
+                        <span id="quiz-progresso" style="font-size: 0.85rem; color: var(--accent-cyan);">Questão 1/3</span>
+                    </div>
+                    <h3 id="quiz-pergunta">Carregando Pergunta...</h3>
                     <div class="quiz-options">
                         <button class="option-btn" onclick="verificarResposta(0)" id="opt0">Opção A</button>
                         <button class="option-btn" onclick="verificarResposta(1)" id="opt1">Opção B</button>
@@ -140,15 +141,13 @@
                     <p id="quiz-feedback" class="quiz-feedback"></p>
                 </div>
             </div>
-        </section>
 
-    </main>
-
-    <!-- Rodapé -->
-    <footer class="footer">
-        <p>&copy; 2026 NexusDigital. Consciência Tecnológica.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+            <!-- JOGO 2: SIMULADOR FATO OU FAKE INTERATIVO -->
+            <div class="quiz-container">
+                <div id="game-fake-box">
+                    <div class="badge-game" style="background: rgba(79, 172, 254, 0.15); color: var(--accent-purple);"><i class="fa-solid fa-magnifying-glass"></i> JOGO 2: SIMULADOR DE VERIFICAÇÃO</div>
+                    <h3 style="margin-top: 1.5rem; margin-bottom: 0.5rem;">Analise a manchete abaixo:</h3>
+                    <div class="news-flashcard" id="news-text">
+                        "Nova inteligência artificial secreta lê mentes à distância através do sinal de Wi-Fi e altera votos nas urnas."
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
