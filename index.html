@@ -111,4 +111,40 @@
                     <p>Campanhas coordenadas de mentiras manipulam eleições e desacreditam instituições. O uso de disparos em massa automatizados infla narrativas falsas e distorce a opinião pública real.</p>
                 </div>
                 <div class="card status-card">
-                    <span class="status
+                    <span class="status-num">03</span>
+                    <h4>Saúde Pública</h4>
+                    <p>Rumores falsos sobre curas milagrosas colocam vidas humanas em risco real. Teorias conspiratórias contra a ciência médica reduzem coberturas vacinais e causam o retorno de doenças graves.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="laboratorio" class="tab-content fade-in">
+            <h2 class="section-title">Laboratório Educativo</h2>
+            
+            <div class="quiz-container">
+                <div id="quiz-box">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; color: var(--accent-cyan); font-weight: bold;">
+                        <span id="quiz-contador">Questão 1</span>
+                    </div>
+                    <h3 id="quiz-pergunta">Pergunta do Quiz</h3>
+                    <div class="quiz-options">
+                        <button class="option-btn" onclick="verificarResposta(0)" id="opt0">Opção A</button>
+                        <button class="option-btn" onclick="verificarResposta(1)" id="opt1">Opção B</button>
+                        <button class="option-btn" onclick="verificarResposta(2)" id="opt2">Opção C</button>
+                    </div>
+                    <p id="quiz-feedback" class="quiz-feedback"></p>
+                    
+                    <button id="btn-proximo" class="option-btn" style="display: none; margin-top: 20px; text-align: center; background: rgba(255, 255, 255, 0.15); width: 100%; font-weight: bold;" onclick="proximaQuestao()">Avançar no Jogo &rarr;</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 NexusDigital. Consciência Tecnológica.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
