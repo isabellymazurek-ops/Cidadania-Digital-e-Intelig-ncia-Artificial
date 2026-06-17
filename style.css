@@ -196,11 +196,11 @@ body {
 
 .split-media {
     flex: 1;
-}/* Adicionado imagens reais de alta definição via background nas suas classes nativas */
+}/* Imagens reais aplicadas diretamente via propriedades CSS nativas nas suas caixas originais */
 .placeholder-image {
     width: 100%;
     height: 300px;
-    background: linear-gradient(rgba(10,11,16,0.4), rgba(10,11,16,0.4)), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80') center/cover !important;
+    background: linear-gradient(rgba(10,11,16,0.45), rgba(10,11,16,0.45)), url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&q=80') center/cover !important;
     border: 1px solid var(--border-glass);
     border-radius: 16px;
     display: flex;
@@ -215,7 +215,7 @@ body {
 .placeholder-video {
     width: 100%;
     height: 300px;
-    background: linear-gradient(rgba(10,11,16,0.4), rgba(10,11,16,0.4)), url('https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=600&q=80') center/cover !important;
+    background: linear-gradient(rgba(10,11,16,0.45), rgba(10,11,16,0.45)), url('https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=600&q=80') center/cover !important;
     border: 1px solid var(--border-glass);
     border-radius: 16px;
     display: flex;
@@ -230,7 +230,7 @@ body {
 .placeholder-image i, .placeholder-video i {
     font-size: 3rem;
     color: var(--accent-cyan);
-    filter: drop-shadow(0 2px 8px rgba(0, 242, 254, 0.5));
+    filter: drop-shadow(0 2px 8px rgba(0, 242, 254, 0.6));
 }
 
 .alert-box {
