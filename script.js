@@ -1,3 +1,31 @@
+// --- BANCO DE DADOS DE CURIOSIDADES ---
+const curiosidades = [
+    "A primeira IA geradora de imagens surgiu muito antes do boom atual, mas os modelos atuais conseguem processar bilhões de parâmetros simultaneamente.",
+    "Estudos indicam que mais de 50% dos jovens não conseguem diferenciar um título de notícia real de uma fake news gerada por IA.",
+    "A tecnologia de clonagem de voz por IA agora precisa de apenas 3 segundos de amostra de áudio para replicar a voz de uma pessoa.",
+    "Alguns países já criaram legislações específicas para que robôs ou algoritmos que tomem decisões públicas passem por auditorias de direitos humanos.",
+    "O termo 'Deepfake' surgiu em 2017 combinando as palavras 'Deep Learning' (aprendizado profundo) e 'Fake' (falso).",
+    "Estima-se que os sistemas automatizados de redes sociais espalhem conteúdos falsos de cunho emocional de forma muito mais eficiente do que perfis reais."
+];
+
+let curiosidadeAtual = 0;
+
+// Força a execução imediata assim que o script carrega para garantir que o texto apareça
+function inicializarCuriosidade() {
+    const elementoTexto = document.getElementById('curiosidade-texto');
+    if (elementoTexto) {
+        elementoTexto.innerText = curiosidades[0];
+    }
+}
+
+function proximaCuriosidade() {
+    curiosidadeAtual = (curiosidadeAtual + 1) % curiosidades.length;
+    const elementoTexto = document.getElementById('curiosidade-texto');
+    if (elementoTexto) {
+        elementoTexto.innerText = curiosidades[curiosidadeAtual];
+    }
+}
+
 // --- SISTEMA DE ABAS (SPA) ---
 document.querySelectorAll('.nav-item').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -21,29 +49,6 @@ function switchTab(tabId) {
     const targetLink = document.querySelector(`[data-target="${tabId}"]`);
     if(targetLink) targetLink.click();
 }
-
-// --- BANCO DE DADOS DE CURIOSIDADES EXPANDIDO ---
-const curiosidades = [
-    "A primeira IA geradora de imagens surgiu muito antes do boom atual, mas os modelos atuais conseguem processar bilhões de parâmetros simultaneamente.",
-    "Estudos indicam que mais de 50% dos jovens não conseguem diferenciar um título de notícia real de uma fake news gerada por IA.",
-    "A tecnologia de clonagem de voz por IA agora precisa de apenas 3 segundos de amostra de áudio para replicar a voz de uma pessoa.",
-    "Alguns países já criaram legislações específicas para que robôs ou algoritmos que tomem decisões públicas passem por auditorias de direitos humanos.",
-    "O termo 'Deepfake' surgiu em 2017 combinando as palavras 'Deep Learning' (aprendizado profundo) e 'Fake' (falso).",
-    "Estima-se que os sistemas automatizados de redes sociais espalhem conteúdos falsos de cunho emocional de forma muito mais eficiente do que perfis reais."
-];
-
-let curiosidadeAtual = 0;
-
-function proximaCuriosidade() {
-    curiosidadeAtual = (curiosidadeAtual + 1) % curiosidades.length;
-    document.getElementById('curiosidade-texto').innerText = curiosidades[curiosidadeAtual];
-}
-
-// Inicializar primeira curiosidade ao carregar a página
-document.addEventListener("DOMContentLoaded", () => {
-    document.getElementById('curiosidade-texto').innerText = curiosidades[0];
-    carregarQuestao();
-});
 
 // --- ENGINE DE QUIZ EDUCATIVO (JOGO MULTIQUESTÕES) ---
 const perguntasQuiz = [
@@ -80,16 +85,21 @@ let questaoAtual = 0;
 
 function carregarQuestao() {
     const q = perguntasQuiz[questaoAtual];
-    document.getElementById('quiz-contador').innerText = `Questão ${questaoAtual + 1} de ${perguntasQuiz.length}`;
-    document.getElementById('quiz-pergunta').innerText = q.pergunta;
-    document.getElementById('opt0').innerText = q.opcoes[0];
-    document.getElementById('opt1').innerText = q.opcoes[1];
-    document.getElementById('opt2').innerText = q.opcoes[2];
+    const contador = document.getElementById('quiz-contador');
+    const pergunta = document.getElementById('quiz-pergunta');
     
-    // Reseta elementos visuais nativos
-    document.getElementById('quiz-feedback').innerText = "";
-    document.getElementById('btn-proximo').style.display = "none";
-    document.querySelectorAll('.quiz-options .option-btn').forEach(btn => btn.disabled = false);
+    if (contador && pergunta) {
+        contador.innerText = `Questão ${questaoAtual + 1} de ${perguntasQuiz.length}`;
+        pergunta.innerText = q.pergunta;
+        document.getElementById('opt0').innerText = q.opcoes[0];
+        document.getElementById('opt1').innerText = q.opcoes[1];
+        document.getElementById('opt2').innerText = q.opcoes[2];
+        
+        // Reseta elementos visuais nativos
+        document.getElementById('quiz-feedback').innerText = "";
+        document.getElementById('btn-proximo').style.style.display = "none";
+        document.querySelectorAll('.quiz-options .option-btn').forEach(btn => btn.disabled = false);
+    }
 }
 
 function verificarResposta(indice) {
@@ -123,5 +133,16 @@ function proximaQuestao() {
     } else {
         questaoAtual = 0; // Reinicia o circuito do jogo
     }
+    carregarQuestao();
+}
+
+// Execução de segurança: garante o carregamento independente da velocidade do navegador
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        inicializarCuriosidade();
+        carregarQuestao();
+    });
+} else {
+    inicializarCuriosidade();
     carregarQuestao();
 }
