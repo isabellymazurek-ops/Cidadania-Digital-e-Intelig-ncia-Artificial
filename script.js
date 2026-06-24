@@ -1,11 +1,13 @@
-// --- BANCO DE DADOS DE CURIOSIDADES ---
+// --- BANCO DE DADOS DE CURIOSIDADES EXPANDIDO ---
 const curiosidades = [
     "A primeira IA geradora de imagens surgiu muito antes do boom atual, mas os modelos atuais conseguem processar bilhões de parâmetros simultaneamente.",
     "Estudos indicam que mais de 50% dos jovens não conseguem diferenciar um título de notícia real de uma fake news gerada por IA.",
     "A tecnologia de clonagem de voz por IA agora precisa de apenas 3 segundos de amostra de áudio para replicar a voz de uma pessoa.",
     "Alguns países já criaram legislações específicas para que robôs ou algoritmos que tomem decisões públicas passem por auditorias de direitos humanos.",
     "O termo 'Deepfake' surgiu em 2017 combinando as palavras 'Deep Learning' (aprendizado profundo) e 'Fake' (falso).",
-    "Estima-se que os sistemas automatizados de redes sociais espalhem conteúdos falsos de cunho emocional de forma muito mais eficiente do que perfis reais."
+    "Estima-se que os sistemas automatizados de redes sociais espalhem conteúdos falsos de cunho emocional de forma muito mais eficiente do que perfis reais.",
+    "Novos modelos de IA de 2026 já conseguem identificar desinformação em tempo real analisando o padrão de distribuição do link pelas redes.",
+    "Pegada de Carbono: Treinar um único modelo grande de linguagem consome mais energia do que manter três carros rodando por toda a sua vida útil."
 ];
 
 let curiosidadeAtual = 0;
@@ -22,6 +24,23 @@ function proximaCuriosidade() {
     const elementoTexto = document.getElementById('curiosidade-texto');
     if (elementoTexto) {
         elementoTexto.innerText = curiosidades[curiosidadeAtual];
+    }
+}
+
+// --- SIMULADOR DE FEED (MINIJOGO DA SOCIAL MEDIA) ---
+function simularFeed(tipo) {
+    const feed = document.getElementById('feed-resultado');
+    if(!feed) return;
+
+    if (tipo === 'polêmica') {
+        feed.innerHTML = "🚨 <strong>Feed Alterado:</strong> O algoritmo detectou alta taxa de cliques. Seu feed agora mostra 80% de brigas políticas, discussões inflamadas e notícias alarmistas para capturar sua atenção através da raiva.";
+        feed.style.borderLeftColor = "#ff4757";
+    } else if (tipo === 'ciência') {
+        feed.innerHTML = "🌌 <strong>Feed Alterado:</strong> Excelente escolha! O algoritmo entendeu seu interesse crítico. Seu feed foi preenchido com artigos sobre astronomia, avanços médicos e computação quântica.";
+        feed.style.borderLeftColor = "#00e676";
+    } else if (tipo === 'gatos') {
+        feed.innerHTML = "🐱 <strong>Feed Alterado:</strong> Zona de Conforto Ativada. O algoritmo cortou todas as notícias complexas do mundo. Seu feed virou uma sequência infinita de vídeos engraçados de animais.";
+        feed.style.borderLeftColor = "#00f2fe";
     }
 }
 
@@ -108,7 +127,7 @@ function verificarResposta(indice) {
 
     if(indice === q.correta) {
         feedback.innerText = "Correto! A validação de mídias é essencial para a cidadania.";
-        feedback.style.color = "#00f2fe";
+        feedback.style.color = "#00e676";
     } else {
         feedback.innerText = "Resposta incorreta. Lembre-se do impacto político e pessoal dos dados.";
         feedback.style.color = "#ff4757";
