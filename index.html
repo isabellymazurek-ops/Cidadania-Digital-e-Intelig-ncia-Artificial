@@ -100,8 +100,8 @@
             <h2 class="section-title">IA na Sociedade</h2>
             
             <div class="mini-game-container">
-                <h3><i class="fa-solid fa-gamepad"></i> Simulador: Treine o Algoritmo</h3>
-                <p>Escolha o tipo de conteúdo para ver como a IA reconfigura o seu feed de notícias:</p>
+                <h3><i class="fa-solid fa-gamepad"></i> Simulador: Treine o Algoritmo do seu Feed</h3>
+                <p>Escolha o tipo de conteúdo para ver como a IA reconfigura o seu cérebro digital e suas emoções:</p>
                 <div class="game-buttons">
                     <button class="btn-secondary" onclick="simularFeed('polêmica')">Focar em Polêmicas</button>
                     <button class="btn-secondary" onclick="simularFeed('ciência')">Focar em Ciência</button>
@@ -115,6 +115,9 @@
                     <p>A Inteligência Artificial gerencia o tráfego em tempo real de grandes metrópoles, prevê diagnósticos médicos complexos antes do surgimento dos sintomas e dita o ritmo da economia global através de investimentos automatizados.</p>
                     <p>O grande desafio da cidadania digital é balancear essa automação com a supervisão humana, evitando vieses algorítmicos. Como as IAs aprendem com dados históricos criados por humanos, elas podem replicar e amplificar preconceitos em processos de contratação ou softwares de segurança pública.</p>
                     
+                    <h3 style="margin-top:20px; color:var(--accent-cyan);"><i class="fa-solid fa-scale-balanced"></i> O Impacto nos Empregos e Economia</h3>
+                    <p>A automação baseada em modelos de linguagem não substitui apenas trabalhos manuais, mas reconfigura profissões intelectuais como advocacia, programação e escrita criativa. A requalificação digital tornou-se obrigatória para a sobrevivência no mercado atual.</p>
+
                     <h3 style="margin-top:20px; color:var(--accent-cyan);">A Regra dos Três Rs da Cidadania</h3>
                     <ul class="lista-estilizada">
                         <li><i class="fa-solid fa-arrow-right"></i> <strong>Rastreabilidade:</strong> Saber a origem dos dados usados pela IA.</li>
@@ -137,6 +140,16 @@
         <section id="deepfakes" class="tab-content fade-in">
             <h2 class="section-title">A Era dos Deepfakes</h2>
             
+            <div class="mini-game-container" style="border-color: var(--accent-purple);">
+                <h3><i class="fa-solid fa-user-secret"></i> Teste de Percepção: Você seria enganado?</h3>
+                <p>Um áudio do seu diretor administrativo chega no WhatsApp pedindo uma transferência bancária emergencial com a voz idêntica à dele. O que você faz?</p>
+                <div class="game-buttons">
+                    <button class="btn-secondary" onclick="testarDeepfake(false)">Faço a transferência na hora, afinal é a voz dele.</button>
+                    <button class="btn-secondary" onclick="testarDeepfake(true)">Ligo por outro canal de comunicação para confirmar a veracidade.</button>
+                </div>
+                <div id="deepfake-resultado" class="feed-preview" style="border-left-color: var(--accent-purple);">Escolha uma alternativa para avaliar sua resiliência a fraudes.</div>
+            </div>
+
             <div class="split-container reverse">
                 <div class="split-text">
                     <p>Deepfakes utilizam redes neurais profundas para clonar vozes, rostos e expressões com perfeição. Através de Redes Adversariais Generativas (GANs), o sistema treina algoritmos para criar falsificações hiper-realistas.</p>
@@ -145,15 +158,18 @@
                         <strong>Como detectar?</strong> Preste atenção em piscadas não naturais, falhas na iluminação das orelhas, assimetria em acessórios e distorções nas bordas do rosto ao se movimentar.
                     </div>
 
+                    <h3 style="margin-top:25px; color:var(--accent-cyan);"><i class="fa-solid fa-circle-exclamation"></i> Consequências Jurídicas e Sociais</h3>
+                    <p>O uso não autorizado da imagem e voz de terceiros para fraudes financeiras, difamação ou manipulação política configura crime cibernético grave em legislações modernas, demandando perícia forense digital especializada para sua identificação e derrubada de servidores.</p>
+
                     <h3 style="margin-top:20px; color:var(--accent-cyan);">Tipos de Falsificação Avançada</h3>
                     <div class="mini-grid">
                         <div class="mini-card">
                             <h5>Face-Swapping</h5>
-                            <p>Substituição de um rosto inteiro em tempo real em transmissões de vídeo.</p>
+                            <p>Substituição de um rosto inteiro em tempo real em transmissões de vídeo e chamadas.</p>
                         </div>
                         <div class="mini-card">
                             <h5>Voice Cloning</h5>
-                            <p>Imitação perfeita de entonação e sotaques usando recortes de áudio de segundos.</p>
+                            <p>Imitação perfeita de entonação, pausas e sotaques usando amostras curtas de áudio.</p>
                         </div>
                     </div>
                 </div>
@@ -195,6 +211,25 @@
                     <span class="status-num">03</span>
                     <h4>Saúde Pública</h4>
                     <p>Rumores falsos sobre curas milagrosas colocam vidas humanas em risco real, reduzindo coberturas vacinais validadas pela ciência.</p>
+                </div>
+            </div>
+
+            <div class="infografico-box" style="border-top: 3px solid var(--alert-red);">
+                <h3><i class="fa-solid fa-kit-medical"></i> O Guia de Sobrevivência contra a Infodemia</h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 15px;">Infodemia é o excesso de informações (falsas ou não) que impossibilita as pessoas de encontrarem fontes confiáveis quando necessitam. Proteja-se seguindo estes passos:</p>
+                <div class="analise-grid">
+                    <div class="analise-item" style="border-left-color: var(--alert-red);">
+                        <strong>1. Olhe a URL</strong>
+                        <p>Sites falsos clonam o design de portais grandes mudando apenas letras sutis no link principal.</p>
+                    </div>
+                    <div class="analise-item" style="border-left-color: var(--alert-red);">
+                        <strong>2. Data de Publicação</strong>
+                        <p>Notícias antigas são frequentemente requentadas fora de contexto para gerar pânico social intencional.</p>
+                    </div>
+                    <div class="analise-item" style="border-left-color: var(--alert-red);">
+                        <strong>3. Cruzamento de Dados</strong>
+                        <p>Se uma notícia bombástica está apenas em um site desconhecido, desconfie imediatamente.</p>
+                    </div>
                 </div>
             </div>
         </section>
