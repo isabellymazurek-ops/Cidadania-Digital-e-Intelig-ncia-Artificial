@@ -370,7 +370,7 @@ body {
     justify-content: center;
 }
 
-/* --- ELEMENTO GRÁFICO/DESENHO: DIAGRAMA DE IA (CSS) --- */
+/* --- DIAGRAMA DE IA (CSS) --- */
 .diagrama-ia {
     position: relative;
     width: 260px;
@@ -422,7 +422,7 @@ body {
     white-space: nowrap;
 }
 
-/* --- ELEMENTO GRÁFICO: SCANNER FACIAL ANIMADO (DEEPFAKES) --- */
+/* --- SCANNER FACIAL ANIMADO (DEEPFAKES) --- */
 .scanner-facial {
     position: relative;
     width: 240px;
@@ -478,7 +478,7 @@ body {
     font-weight: bold;
 }
 
-/* --- ELEMENTO GRÁFICO: FLUXO DE REDE (DESINFORMAÇÃO) --- */
+/* --- FLUXO DE REDE (DESINFORMAÇÃO) --- */
 .fluxo-desinformacao {
     display: flex;
     justify-content: center;
@@ -582,7 +582,6 @@ body {
     margin-bottom: 5px;
 }
 
-/* STATUS CARDS COM MARCADORES */
 .center-text {
     text-align: center;
     max-width: 700px;
@@ -605,7 +604,7 @@ body {
     color: var(--text-main);
 }
 
-/* --- MINI-SIMULADOR ALGORÍTMICO INTERATIVO --- */
+/* --- MINI-SIMULADORES INTERATIVOS --- */
 .mini-game-container {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(17, 24, 39, 0.9));
     border: 1px solid rgba(59, 130, 246, 0.2);
@@ -689,7 +688,7 @@ body {
     min-height: 24px;
 }
 
-/* --- COMPONENTE FOOTER --- */
+/* --- FOOTER --- */
 .footer {
     text-align: center;
     padding: 40px 20px;
@@ -699,7 +698,7 @@ body {
     margin-top: 60px;
 }
 
-/* --- SUPORTE COMPLETO MÓVEL --- */
+/* --- SUPORTE MOBILE --- */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
