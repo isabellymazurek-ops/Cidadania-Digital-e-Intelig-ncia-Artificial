@@ -39,6 +39,7 @@ document.querySelectorAll('.nav-item').forEach(link => {
         const targetTab = document.getElementById(targetId);
         if (targetTab) {
             targetTab.classList.add('active-tab');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     });
 });
