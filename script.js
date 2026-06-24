@@ -44,6 +44,20 @@ function simularFeed(tipo) {
     }
 }
 
+// --- MINIJOGO DE DEEPFAKE ---
+function testarDeepfake(respostaSegura) {
+    const box = document.getElementById('deepfake-resultado');
+    if(!box) return;
+
+    if(respostaSegura) {
+        box.innerHTML = "✅ <strong>Excelente Cidadão Digital!</strong> Canais cruzados de comunicação (ligar diretamente, validar fisicamente) são as únicas defesas contra clonagem de voz por engenharia social.";
+        box.style.color = "#00e676";
+    } else {
+        box.innerHTML = "❌ <strong>Alerta de Vulnerabilidade!</strong> Você caiu no golpe. Criminosos usam urgência artificial em combinação com Deepfakes de voz para roubar milhares de reais diariamente.";
+        box.style.color = "#ff4757";
+    }
+}
+
 // --- SISTEMA DE ABAS (SPA) ---
 document.querySelectorAll('.nav-item').forEach(link => {
     link.addEventListener('click', function(e) {
