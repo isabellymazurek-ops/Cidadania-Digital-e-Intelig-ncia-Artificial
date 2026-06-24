@@ -11,7 +11,7 @@
 
     <nav class="navbar">
         <div class="logo">
-            <i class="fa-solid fa-brain text-gradient"></i> <span>NexusDigital</span>
+            <i class="fa-solid fa-brain text-gradient animation-pulse"></i> <span>NexusDigital</span>
         </div>
         <ul class="nav-links">
             <li><a href="#" class="nav-item active" data-target="inicio">Início</a></li>
@@ -31,41 +31,26 @@
                 <button class="btn-primary" onclick="switchTab('ia-sociedade')">Explorar Universo</button>
             </div>
 
-            <div class="pontos-melhoria" style="margin-bottom: 40px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 8px;">
-                <h2>Pontos que precisam melhorar</h2>
-                <p>🎨 1. Design muito simples</p>
-                <p>O visual está bem básico:</p>
-                <ul>
-                    <li>pouca hierarquia (títulos pouco destacados)</li>
-                    <li>pouco uso de cores ou elementos visuais</li>
-                    <li>aparência mais “documento” do que “site”</li>
-                </ul>
-                <p>👉 Isso afeta a experiência do usuário.</p>
-                <br>
-                <p>📱 2. Responsividade e modernização</p>
-                <p>Parece um site estático simples do GitHub Pages:</p>
-                <ul>
-                    <li>não há elementos interativos</li>
-                    <li>não há adaptação visual mais moderna (cards, seções, destaques)</li>
-                </ul>
-                <br>
-                <p>🧭 3. Organização do conteúdo</p>
-                <p>O conteúdo poderia ser mais escaneável:</p>
-                <ul>
-                    <li>usar subtítulos mais fortes</li>
-                    <li>dividir em blocos (ex: “O que é”, “Impactos”, “Conclusão”)</li>
-                    <li>inserir listas ou destaques visuais</li>
-                </ul>
-                <br>
-                <p>🖼️ 4. Falta de elementos visuais</p>
-                <p>Faltam:</p>
-                <ul>
-                    <li>imagens explicativas</li>
-                    <li>ícones</li>
-                    <li>diagramas</li>
-                    <li>ou qualquer elemento que quebre o texto</li>
-                </ul>
-                <p>Isso deixa o site “pesado” visualmente.</p>
+            <div class="pontos-melhoria">
+                <h2><i class="fa-solid fa-gauge-high"></i> Pontos que precisam melhorar (Análise de Design)</h2>
+                <div class="analise-grid">
+                    <div class="analise-item">
+                        <h4>🎨 1. Design muito simples</h4>
+                        <p>O visual original possui pouca hierarquia e aparência de documento, afetando a experiência.</p>
+                    </div>
+                    <div class="analise-item">
+                        <h4>📱 2. Responsividade e Modernização</h4>
+                        <p>Falta de elementos interativos avançados, cards expansivos e microanimações modernas.</p>
+                    </div>
+                    <div class="analise-item">
+                        <h4>🧭 3. Organização do Conteúdo</h4>
+                        <p>Necessidade de tornar o texto mais escaneável e dividido em blocos visuais nítidos.</p>
+                    </div>
+                    <div class="analise-item">
+                        <h4>🖼️ 4. Falta de Elementos Visuais</h4>
+                        <p>A ausência de gráficos, diagramas interativos e quebras visuais torna a leitura pesada.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="grid-cards">
@@ -86,6 +71,24 @@
                 </div>
             </div>
 
+            <div class="infografico-box">
+                <h3><i class="fa-solid fa-chart-pie"></i> Infográfico Interativo: Pilares da Cidadania na Era da IA</h3>
+                <div class="pilar-bar-container">
+                    <div class="pilar-bar" style="--width-target: 85%; --bar-color: #00f2fe;">
+                        <span>Alfabetização Digital (Saber usar e identificar IAs)</span>
+                        <div class="bar-fill"></div>
+                    </div>
+                    <div class="pilar-bar" style="--width-target: 90%; --bar-color: #3b82f6;">
+                        <span>Segurança de Dados (Criptografia e senhas fortes)</span>
+                        <div class="bar-fill"></div>
+                    </div>
+                    <div class="pilar-bar" style="--width-target: 75%; --bar-color: #7c3aed;">
+                        <span>Responsabilidade Crítica (Não espalhar fakes)</span>
+                        <div class="bar-fill"></div>
+                    </div>
+                </div>
+            </div>
+
             <div class="curiosidade-box">
                 <div class="curiosidade-badge"><i class="fa-solid fa-lightbulb"></i> Você Sabia?</div>
                 <p id="curiosidade-texto">Carregando fato curioso...</p>
@@ -95,15 +98,37 @@
 
         <section id="ia-sociedade" class="tab-content fade-in">
             <h2 class="section-title">IA na Sociedade</h2>
+            
+            <div class="mini-game-container">
+                <h3><i class="fa-solid fa-gamepad"></i> Simulador: Treine o Algoritmo</h3>
+                <p>Escolha o tipo de conteúdo para ver como a IA reconfigura o seu feed de notícias:</p>
+                <div class="game-buttons">
+                    <button class="btn-secondary" onclick="simularFeed('polêmica')">Focar em Polêmicas</button>
+                    <button class="btn-secondary" onclick="simularFeed('ciência')">Focar em Ciência</button>
+                    <button class="btn-secondary" onclick="simularFeed('gatos')">Focar em Vídeos de Gatos</button>
+                </div>
+                <div id="feed-resultado" class="feed-preview">Seu feed está equilibrado. Escolha uma opção acima para testar!</div>
+            </div>
+
             <div class="split-container">
                 <div class="split-text">
                     <p>A Inteligência Artificial gerencia o tráfego em tempo real de grandes metrópoles, prevê diagnósticos médicos complexos antes do surgimento dos sintomas e dita o ritmo da economia global através de investimentos automatizados.</p>
                     <p>O grande desafio da cidadania digital é balancear essa automação com a supervisão humana, evitando vieses algorítmicos. Como as IAs aprendem com dados históricos criados por humanos, elas podem replicar e amplificar preconceitos em processos de contratação ou softwares de segurança pública.</p>
+                    
+                    <h3 style="margin-top:20px; color:var(--accent-cyan);">A Regra dos Três Rs da Cidadania</h3>
+                    <ul class="lista-estilizada">
+                        <li><i class="fa-solid fa-arrow-right"></i> <strong>Rastreabilidade:</strong> Saber a origem dos dados usados pela IA.</li>
+                        <li><i class="fa-solid fa-arrow-right"></i> <strong>Responsabilidade:</strong> Identificar quem responde pelo erro de um robô.</li>
+                        <li><i class="fa-solid fa-arrow-right"></i> <strong>Resiliência:</strong> Educar a população contra a dependência cega da automação.</li>
+                    </ul>
                 </div>
                 <div class="split-media">
-                    <div class="placeholder-image">
-                        <i class="fa-solid fa-robot"></i>
-                        <span>Ilustração: IA Integrada</span>
+                    <div class="diagrama-ia animate-float">
+                        <div class="core-node"><i class="fa-solid fa-brain"></i></div>
+                        <div class="satellite-node node-1"><i class="fa-solid fa-car"></i></div>
+                        <div class="satellite-node node-2"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div class="satellite-node node-3"><i class="fa-solid fa-wallet"></i></div>
+                        <span class="label-diagrama">Ecossistema Conectado da IA</span>
                     </div>
                 </div>
             </div>
@@ -111,17 +136,33 @@
 
         <section id="deepfakes" class="tab-content fade-in">
             <h2 class="section-title">A Era dos Deepfakes</h2>
+            
             <div class="split-container reverse">
                 <div class="split-text">
                     <p>Deepfakes utilizam redes neurais profundas para clonar vozes, rostos e expressões com perfeição. Através de Redes Adversariais Generativas (GANs), o sistema treina algoritmos para criar falsificações hiper-realistas.</p>
+                    
                     <div class="alert-box">
                         <strong>Como detectar?</strong> Preste atenção em piscadas não naturais, falhas na iluminação das orelhas, assimetria em acessórios e distorções nas bordas do rosto ao se movimentar.
                     </div>
+
+                    <h3 style="margin-top:20px; color:var(--accent-cyan);">Tipos de Falsificação Avançada</h3>
+                    <div class="mini-grid">
+                        <div class="mini-card">
+                            <h5>Face-Swapping</h5>
+                            <p>Substituição de um rosto inteiro em tempo real em transmissões de vídeo.</p>
+                        </div>
+                        <div class="mini-card">
+                            <h5>Voice Cloning</h5>
+                            <p>Imitação perfeita de entonação e sotaques usando recortes de áudio de segundos.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="split-media">
-                    <div class="placeholder-video">
-                        <i class="fa-solid fa-play"></i>
-                        <span>Simulação de Vídeo: Análise Facial IA</span>
+                    <div class="scanner-facial">
+                        <i class="fa-solid fa-user-astronaut facial-avatar"></i>
+                        <div class="scan-line"></div>
+                        <div class="grid-overlay"></div>
+                        <span>Análise Facial Biométrica em Progresso</span>
                     </div>
                 </div>
             </div>
@@ -131,6 +172,14 @@
             <h2 class="section-title">Desinformação & Impacto Social</h2>
             <p class="center-text">As fake news potencializadas por bots espalham-se seis vezes mais rápido do que as notícias verdadeiras nas plataformas digitais.</p>
             
+            <div class="fluxo-desinformacao">
+                <div class="fluxo-no"><i class="fa-solid fa-ghost"></i><br>Bot Criador</div>
+                <div class="fluxo-seta"><i class="fa-solid fa-angles-right"></i></div>
+                <div class="fluxo-no nuclear"><i class="fa-solid fa-share-nodes"></i><br>Bolha Viral</div>
+                <div class="fluxo-seta"><i class="fa-solid fa-angles-right"></i></div>
+                <div class="fluxo-no"><i class="fa-solid fa-users-slash"></i><br>Impacto Real</div>
+            </div>
+
             <div class="grid-cards">
                 <div class="card status-card">
                     <span class="status-num">01</span>
@@ -151,7 +200,7 @@
         </section>
 
         <section id="laboratorio" class="tab-content fade-in">
-            <h2 class="section-title">Laboratório Educativo</h2>
+            <h2 class="section-title">Laboratório Educativo Interativo</h2>
             
             <div class="quiz-container">
                 <div id="quiz-box">
